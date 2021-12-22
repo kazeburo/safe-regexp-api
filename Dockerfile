@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:16-alpine
 
 WORKDIR /usr/src/app
 
@@ -8,11 +8,9 @@ RUN npm install
 
 COPY . .
 
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
+RUN apk add --no-cache tini
 
 EXPOSE 3000
 
-ENTRYPOINT ["/tini", "--"]
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD [ "node", "index.mjs" ]
