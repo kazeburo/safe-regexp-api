@@ -8,5 +8,11 @@ RUN npm install
 
 COPY . .
 
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
 EXPOSE 3000
+
+ENTRYPOINT ["/tini", "--"]
 CMD [ "node", "index.mjs" ]
