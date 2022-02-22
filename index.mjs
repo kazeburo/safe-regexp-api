@@ -5,7 +5,8 @@ var app = express();
 app.use(json())
 app.use(urlencoded({ extended: true }));
 
-var server = app.listen(3000, function(){
+const PORT = process.env.PORT || 3000;
+var server = app.listen(PORT, function(){
     console.log("Node.js is listening to PORT:" + server.address().port);
 });
 
