@@ -10,7 +10,5 @@ COPY . .
 
 RUN apk add --no-cache tini
 
-EXPOSE 3000
-
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD [ "node", "index.mjs" ]
