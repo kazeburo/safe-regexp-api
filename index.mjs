@@ -2,6 +2,8 @@ import express, { json, urlencoded } from "express";
 import safe from 'safe-regex';
 var app = express();
 
+app.disable("x-powered-by");
+
 app.use(json())
 app.use(urlencoded({ extended: true }));
 
